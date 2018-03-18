@@ -20,10 +20,10 @@ socket.emit('newMessage',generateMessage('admin','Welcome to the chat-app'));
 socket.broadcast.emit('newMessage',generateMessage('admin','New User Joined'));
 
 //sending message to client side
-socket.on('createMessage',(message)=>{
+socket.on('createMessage',(message,callback)=>{
   console.log('createMessage',message);
  io.emit('newMessage',generateMessage(message.from,message.text));
-  
+  callback('This is  acknowledgment from server');
   // socket.broadcast.emit('newMessage',{
   //     from:message.from,
   //     text:message.text
